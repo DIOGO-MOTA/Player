@@ -10,7 +10,7 @@ export function Header() {
 
   return (
     <header className={styles.headerContainer}>
-      <img src="https://image.freepik.com/vetores-gratis/logotipo-do-fone-de-ouvido_10250-2549.jpg" alt="logo" />
+      <img src="/logo 2.png" alt="logo" />
       <p>O melhor para você ouvir, sempre</p>
       <span>{currentDate}</span>
     </header>
