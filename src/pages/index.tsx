@@ -3,6 +3,7 @@ import { ptBR } from 'date-fns/locale'
 import { GetStaticProps } from 'next'
 import { api } from '../services/api'
 import { FiPlay } from 'react-icons/fi'
+import Link from 'next/link'
 import Image from 'next/image'
 import { convertDurationToTimeString } from '../utils/convertDurationToTimeString'
 
@@ -16,7 +17,6 @@ type Episode = {
   publishedAt: string;
   duration: number;
   durationAsString: string;
-  description: string;
   url: string;
 }
 type HomeProps = {
@@ -43,7 +43,9 @@ export default function Home({ allEpisodes, latesEpisodes }: HomeProps) {
                 />
 
                 <div className={styles.episodeDetails}>
-                  <a href="">{episode.title}</a>
+                  <Link href={`/episodes/${episode.id}`}>
+                    <a>{episode.title}</a>
+                  </Link>
                   <p>{episode.menbers}</p>
                   <span>{episode.publishedAt}</span>
                   <span>{episode.durationAsString}</span>
@@ -63,12 +65,14 @@ export default function Home({ allEpisodes, latesEpisodes }: HomeProps) {
 
         <table cellSpacing={0}>
           <thead>
-            <th></th>
-            <th>Podcast</th>
-            <th>Integrantes</th>
-            <th>Data</th>
-            <th>Duração</th>
-            <th></th>
+            <tr>
+              <th></th>
+              <th>Podcast</th>
+              <th>Integrantes</th>
+              <th>Data</th>
+              <th>Duração</th>
+              <th></th>
+            </tr>
           </thead>
           <tbody>
             {allEpisodes.map(episode => {
@@ -84,7 +88,9 @@ export default function Home({ allEpisodes, latesEpisodes }: HomeProps) {
                     />
                   </td>
                   <td>
-                    <a href="">{episode.title}</a>
+                    <Link href={`/episodes/${episode.id}`}>
+                      <a>{episode.title}</a>
+                    </Link>
                   </td>
                   <td>{episode.menbers}</td>
                   <td>{episode.publishedAt}</td>
