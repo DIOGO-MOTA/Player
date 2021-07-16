@@ -8,6 +8,8 @@ import Image from 'next/image'
 import { convertDurationToTimeString } from '../utils/convertDurationToTimeString'
 
 import styles from './home.module.scss'
+import { useContext } from 'react'
+import { PlayerContext } from './contexts/PlayerContext'
 
 type Episode = {
   id: string;
@@ -25,6 +27,7 @@ type HomeProps = {
 }
 
 export default function Home({ allEpisodes, latesEpisodes }: HomeProps) {
+  const { play } = useContext(PlayerContext)
   return (
     <div className={styles.homepage}>
 
@@ -51,7 +54,7 @@ export default function Home({ allEpisodes, latesEpisodes }: HomeProps) {
                   <span>{episode.durationAsString}</span>
                 </div>
 
-                <button type="button">
+                <button type="button" onClick={() => play(episode)}>
                   <FiPlay type="Tocar" />
                 </button>
               </li>
