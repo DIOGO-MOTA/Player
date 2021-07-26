@@ -27,14 +27,17 @@ type HomeProps = {
 }
 
 export default function Home({ allEpisodes, latesEpisodes }: HomeProps) {
-  const { play } = useContext(PlayerContext)
+  const { playList } = useContext(PlayerContext);
+
+  const episodeList = [...latesEpisodes, ...allEpisodes];
+
   return (
     <div className={styles.homepage}>
 
       <section className={styles.latestEpisodes}>
         <h2>Últimos lançamentos</h2>
         <ul>
-          {latesEpisodes.map(episode => {
+          {latesEpisodes.map((episode, index) => {
             return (
               <li key={episode.id}>
                 <Image
@@ -54,7 +57,7 @@ export default function Home({ allEpisodes, latesEpisodes }: HomeProps) {
                   <span>{episode.durationAsString}</span>
                 </div>
 
-                <button type="button" onClick={() => play(episode)}>
+                <button type="button" onClick={() => playList(episodeList, index)}>
                   <FiPlay type="Tocar" />
                 </button>
               </li>
@@ -78,7 +81,7 @@ export default function Home({ allEpisodes, latesEpisodes }: HomeProps) {
             </tr>
           </thead>
           <tbody>
-            {allEpisodes.map(episode => {
+            {allEpisodes.map((episode, index) => {
               return (
                 <tr key={episode.id}>
                   <td style={{ width: 72 }}>
@@ -99,7 +102,7 @@ export default function Home({ allEpisodes, latesEpisodes }: HomeProps) {
                   <td>{episode.publishedAt}</td>
                   <td style={{ width: 100 }}>{episode.durationAsString}</td>
                   <td>
-                    <button type="button">
+                    <button type="button" onClick={() => playList(episodeList, index + latesEpisodes.length )}>
                       <FiPlay type="Tocar episodio" />
                     </button>
                   </td>

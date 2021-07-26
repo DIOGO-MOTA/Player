@@ -11,7 +11,6 @@ import styles from './styles.module.scss';
 
 
 
-
 export function Player() {
   const audioRef = useRef<HTMLAudioElement>(null);
 
@@ -20,7 +19,11 @@ export function Player() {
     currentEpisodeIndex, 
     isPlaying, 
     TogglePlay,
-    setPlayingState
+    setPlayingState,
+    playNext,
+    playPrevious,
+    hasNext,
+    hasPrevious
   } = useContext(PlayerContext)
 
   const episode = episodeList[currentEpisodeIndex]
@@ -96,7 +99,7 @@ export function Player() {
             <IoInfiniteOutline type="Embaralhar" />
           </button>
 
-          <button type="button" disabled={!episode}>
+          <button type="button" onClick={playPrevious} disabled={!episode || !hasPrevious}>
             <FiSkipBack type="Tocar anterior" />
           </button>
 
@@ -112,7 +115,7 @@ export function Player() {
             }
           </button>
 
-          <button type="button" disabled={!episode}>
+          <button type="button" onClick={playNext} disabled={!episode || !hasNext}>
             <FiSkipForward type="Tocar proxíma" />
           </button>
 
