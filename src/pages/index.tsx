@@ -8,8 +8,8 @@ import Image from 'next/image'
 import { convertDurationToTimeString } from '../utils/convertDurationToTimeString'
 
 import styles from './home.module.scss'
-import { useContext } from 'react'
-import { PlayerContext } from './contexts/PlayerContext'
+
+import { usePlayer } from './contexts/PlayerContext'
 
 type Episode = {
   id: string;
@@ -27,7 +27,7 @@ type HomeProps = {
 }
 
 export default function Home({ allEpisodes, latesEpisodes }: HomeProps) {
-  const { playList } = useContext(PlayerContext);
+  const { playList } = usePlayer();
 
   const episodeList = [...latesEpisodes, ...allEpisodes];
 
