@@ -1,84 +1,116 @@
 .playerContainer {
-  padding: 3rem 4rem;
-  width: 26.5rem;
-  height: 100vh;
-
-  background: var(--purple-500);
+  padding: 0 4rem;
+  background: var(--gray-900);
   color: var(--white);
 
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   justify-content: space-between;
 
-  header {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-
-    img {
-      width: 50px;
-      height: 50px;
-    }
-  }
 
   strong {
     font-family: Lexend, sans-serif;
     font-weight: 600;
   }
 
-  footer {
-    align-self: stretch;
-
-    &.enpty .progress {
-      opacity: 0.5;
-    }
-  }
   
 }
 
-.currentEpisode {
-  text-align: center;
+.header {
+  display: flex;
+  width: 10rem;
+  height: 8rem;
+  margin-left: 6rem;
+  align-items: center;
 
+
+  
+  .buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    
+  
+    button {
+      background: transparent;
+      border: 0;
+      font-size: 0;
+      
+  
+      transition: filter 0.2s;
+  
+      &:disabled {
+        cursor: default;
+        opacity: 0.5;
+      }
+  
+      &:hover:not(:disabled) {
+        filter: brightness(0.7);
+      }
+  
+      &.playButton {
+        width: 2.5rem;
+        height: 2.5rem;
+        border-radius: 1rem;
+  
+  
+        &:hover:not(:disabled) {
+          filter: brightness(0.95);
+        }
+      }
+  
+      svg {
+        border-color: white;
+        width: 2rem;
+        height: 2rem;
+      }
+    }
+  }
+}
+
+
+.currentEpisode {
+  display: flex;
+  align-items: center;
+  margin-right: 40rem;
+  
   img {
-    border-radius: 1.5rem;
+    
+    width: 4rem;
+    height: 4rem;
+    border-radius: 1rem;
   }
 
   strong {
-    display: block;
-    margin-top: 2rem;
+    
+    margin-left: 1rem;
     font: 600 1.25rem Lexend, sans-serif;
     line-height: 1.75rem;
   }
 
-  span {
-    display: block;
-    margin-top: 1rem;
-    opacity: 0.6;
-    line-height: 1.5rem;
-  }
+ 
 }
 
 .enptyPlayer {
-  width: 100%;
-  height: 20rem;
-  border: 1.5px dashed var(--purple-300);
-  border-radius: 1.5rem;
-  background: linear-gradient(143.8deg, rgba(145, 100, 258, 0.8) 0%, rgba(0, 0, 0, 0) 100%);
-  
+  width: 20rem;
+  height: 6rem;
   padding: 4rem;
   text-align: center;
+  margin-right: 40rem;
 
   display: flex;
   align-items: center;
-  justify-content: center;
 }
 
 .progress {
   display: flex;
+  width: 30rem;
   align-items: center;
   gap: 0.5rem;
   font-size: 0.875rem;
+  
 
   span {
     display: inline-block;
@@ -92,54 +124,9 @@
     .enptySlider {
       width: 100%;
       height: 4px;
-      background: var(--purple-300);
+      background: #526073;
     }
   }
   
 }
 
-.buttons {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 2.5rem;
-  gap: 1.5rem;
-
-  button {
-    background: transparent;
-    border: 0;
-    font-size: 0;
-
-    transition: filter 0.2s;
-
-    &:disabled {
-      cursor: default;
-      opacity: 0.5;
-    }
-
-    &.isActive {
-      color: #84D361;
-    }
-
-    &:hover:not(:disabled) {
-      filter: brightness(0.7);
-    }
-
-    &.playButton {
-      width: 4rem;
-      height: 4rem;
-      border-radius: 1rem;
-      background: var(--purple-400);
-
-      &:hover:not(:disabled) {
-        filter: brightness(0.95);
-      }
-    }
-
-    svg {
-      border-color: white;
-      width: 2rem;
-      height: 2rem;
-    }
-  }
-}

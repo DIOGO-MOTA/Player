@@ -10,7 +10,6 @@ export function Header() {
 
   return (
     <header className={styles.headerContainer}>
-      <img src="/logo 2.png" alt="logo" />
       <p>O melhor para você ouvir, sempre</p>
       <span>{currentDate}</span>
     </header>

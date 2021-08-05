@@ -1,0 +1,14 @@
+.sidebarContainer{
+  padding: 0 4rem;
+  width: 20rem;
+  height: auto;
+
+  background: var(--gray-850);
+  border-right: 1px  solid var(--gray-800);
+  color: var(--white);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}

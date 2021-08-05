@@ -31,12 +31,12 @@ export function Player() {
     setProgress(amount);
   }
 
-  function handleEpisodeEnded () {
-     if (hasNext) {
-       playNext()
-     } else {
-       clearPlayerState()
-     }
+  function handleEpisodeEnded() {
+    if (hasNext) {
+      playNext()
+    } else {
+      clearPlayerState()
+    }
   }
 
   const {
@@ -74,72 +74,9 @@ export function Player() {
 
   return (
     <div className={styles.playerContainer}>
-      <header>
-        <img src="/logo.png" alt="logo" />
-        <strong>Tocando agora</strong>
-      </header>
-
-      {episode ? (
-        <div className={styles.currentEpisode}>
-          <Image
-            width={592}
-            height={592}
-            src={episode.thumbnail}
-            objectFit="cover"
-          />
-          <strong>{episode.title}</strong>
-          <span>{episode.menbers}</span>
-
-        </div>
-      ) : (
-        <div className={styles.enptyPlayer}>
-          <strong>Selecione um podcast para ouvir</strong>
-        </div>
-      )}
-
-      <footer className={!episode ? styles.enpty : ''}>
-
-        <div className={styles.progress}>
-        <span>{convertDurationToTimeString(progress)}</span>
-          <div className={styles.slider} >
-            {episode ? (
-              <Slider
-                max={episode.duration}
-                value={progress}
-                onChange={handleSeek}
-                trackStyle={{ backgroundColor: '#84D361' }}
-                railStyle={{ backgroundColor: '#9f75ff' }}
-                handleStyle={{ borderColor: '#84D361', borderWidth: 4 }}
-              />
-            ) : (
-              <div className={styles.enptySlider} />
-            )}
-          </div>
-          <span>{convertDurationToTimeString(episode?.duration ?? 0 )}</span>
-        </div>
-
-        {episode && (
-          <audio
-            src={episode.url}
-            ref={audioRef}
-            loop={isLooping}
-            autoPlay
-            onEnded={handleEpisodeEnded}
-            onPlay={() => setPlayingState(true)} // play do teclado
-            onPause={() => setPlayingState(false)} // pause do teclado
-            onLoadedMetadata={setupProgressListener}
-          />
-        )}
-
+      <section className={styles.header}>
         <div className={styles.buttons}>
-          <button
-            type="button"
-            disabled={!episode || episodeList.length === 1}
-            onClick={toggleShuffle}
-            className={isShuffling ? styles.isActive : ''}
-          >
-            <IoInfiniteOutline type="Embaralhar" />
-          </button>
+
 
           <button type="button" onClick={playPrevious} disabled={!episode || !hasPrevious}>
             <FiSkipBack type="Tocar anterior" />
@@ -161,18 +98,64 @@ export function Player() {
             <FiSkipForward type="Tocar proxíma" />
           </button>
 
-          <button
-            type="button"
-            disabled={!episode}
-            onClick={toggleLoop}
-            className={isLooping ? styles.isActive : ''}
-          >
-            <FiRotateCcw type="Repetir" />
-          </button>
 
         </div>
+      </section>
 
-      </footer>
+      {episode ? (
+        <div className={styles.currentEpisode}>
+          <Image
+            width={130}
+            height={130}
+            src={episode.thumbnail}
+            objectFit="cover"
+          />
+          <strong>{episode.title}</strong>
+
+        </div>
+      ) : (
+        <div className={styles.enptyPlayer}>
+          <strong>Selecione um podcast para ouvir</strong>
+        </div>
+      )}
+
+      <section className={!episode ? styles.enpty : ''}>
+
+        <div className={styles.progress}>
+          <span>{convertDurationToTimeString(progress)}</span>
+          <div className={styles.slider} >
+            {episode ? (
+              <Slider
+                max={episode.duration}
+                value={progress}
+                onChange={handleSeek}
+                trackStyle={{ backgroundColor: '#394be8' }}
+                railStyle={{ backgroundColor: '#526073' }}
+                handleStyle={{ borderColor: '#394be8', borderWidth: 4 }}
+              />
+            ) : (
+              <div className={styles.enptySlider} />
+            )}
+          </div>
+          <span>{convertDurationToTimeString(episode?.duration ?? 0)}</span>
+        </div>
+
+        {episode && (
+          <audio
+            src={episode.url}
+            ref={audioRef}
+            loop={isLooping}
+            autoPlay
+            onEnded={handleEpisodeEnded}
+            onPlay={() => setPlayingState(true)} // play do teclado
+            onPause={() => setPlayingState(false)} // pause do teclado
+            onLoadedMetadata={setupProgressListener}
+          />
+        )}
+
+
+
+      </section>
     </div >
   )
 

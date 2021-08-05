@@ -140,8 +140,8 @@ export const getStaticProps: GetStaticProps = async () => {
     }
   })
 
-  const latesEpisodes = episodes.slice(0, 2);
-  const allEpisodes = episodes.slice(2, episodes.length);
+  const latesEpisodes = episodes.slice(1, 5);
+  const allEpisodes = episodes.slice(0, episodes.length);
 
 
 

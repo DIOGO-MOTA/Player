@@ -23,9 +23,12 @@
  --gray-50: #F7F8FA;
  --gray-100: #E6E8EB;
  --gray-200: #AFB2B1;
- --gray-800: #88888D;
+ --gray-400: #25262c;
+ --gray-800: #25262c;
+ --gray-850: #1b1c22;
+ --gray-900: #0e0e0e;
 
- --green-500: #84D361;
+ --blue-500: #394be8;
 
  --purple-300: #9F75EF;
  --purple-400: #9164fA;
@@ -34,7 +37,7 @@
 }
 
 body {
-  background: var(--gray-50);
+  background: var(--gray-850);
 }
 
 body, input, textarea, button {
@@ -45,7 +48,7 @@ body, input, textarea, button {
 h1, h2, h3, h4, h5, h6 {
   font-weight: 600;
   font-family: Lexend, sans-serif;
-  color: var(--gray-800);
+  color: var(--gray-50);
 }
 
 h1 {
