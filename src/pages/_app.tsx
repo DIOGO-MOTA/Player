@@ -13,7 +13,7 @@ function MyApp({ Component, pageProps }) {
     <PlayerContextProvider>
 
       <div className={styles.wrapper}>
-        < Sidebar />
+        
         <main>
           <Header />
           <Component {...pageProps} />

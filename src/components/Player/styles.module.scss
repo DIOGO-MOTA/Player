@@ -21,7 +21,6 @@
   display: flex;
   width: 10rem;
   height: 8rem;
-  margin-left: 6rem;
   align-items: center;
 
 
@@ -74,7 +73,6 @@
 .currentEpisode {
   display: flex;
   align-items: center;
-  margin-right: 40rem;
   
   img {
     
@@ -98,7 +96,7 @@
   height: 6rem;
   padding: 4rem;
   text-align: center;
-  margin-right: 40rem;
+ 
 
   display: flex;
   align-items: center;
@@ -130,3 +128,21 @@
   
 }
 
+@media (max-width: 1023px ) {
+  .playerContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 0 2rem;
+  
+  }
+  .currentEpisode{
+    margin-bottom: 1rem;
+  }
+}
+
+@media (max-width: 375px ) {
+  .progress {
+    width: 25rem;
+  }
+}
